@@ -233,16 +233,16 @@ Fetches all events for all clubs.
 -  200 OK: Successfully retrieved all events.
 ```
 {
-"data": [
-  {
-  "club_id": number,
-  "title": string,
-  "date": string,
-  "room": string,
-  "incentives": string | null
-  },
-  ...
-  ]
+  "data": [
+    {
+    "club_id": number,
+    "title": string,
+    "date": string,
+    "room": string,
+    "incentives": string | null
+    },
+    ...
+    ]
 }
 ```
 - 500 Internal Server Error: Database or server error.
@@ -297,16 +297,16 @@ Fetches all upcoming events for a specific user based on their club preferences.
 -  200 OK: Successfully retrieved all events.
 ```
 {
-"data": [
-  {
-  "club_id": number,
-  "title": string,
-  "date": string,
-  "room": string,
-  "incentives": string | null
-  },
-  ...
-  ]
+  "data": [
+    {
+    "club_id": number,
+    "title": string,
+    "date": string,
+    "room": string,
+    "incentives": string | null
+    },
+    ...
+    ]
 }
 ```
 -  500 Internal Server Error: Database or server error during fetching.
@@ -331,16 +331,16 @@ Fetches all non-favorite events for a user based on their club preferences.
 -  200 OK: Successfully retrieved all events.
 ```
 {
-"data": [
-  {
-  "club_id": number,
-  "title": string,
-  "date": string,
-  "room": string,
-  "incentives": string | null
-  },
-  ...
-  ]
+  "data": [
+    {
+    "club_id": number,
+    "title": string,
+    "date": string,
+    "room": string,
+    "incentives": string | null
+    },
+    ...
+    ]
 }
 ```
 -  500 Internal Server Error: Database or server error during fetching.
@@ -365,16 +365,16 @@ Fetches all favorite events for a user based on their club preferences.
 -  200 OK: Successfully retrieved all events.
 ```
 {
-"data": [
-  {
-  "club_id": number,
-  "title": string,
-  "date": string,
-  "room": string,
-  "incentives": string | null
-  },
-  ...
-  ]
+  "data": [
+    {
+    "club_id": number,
+    "title": string,
+    "date": string,
+    "room": string,
+    "incentives": string | null
+    },
+    ...
+    ]
 }
 ```
 -  500 Internal Server Error: Database or server error during fetching.
@@ -384,7 +384,6 @@ Fetches all favorite events for a user based on their club preferences.
 
 # User
 ---
-
 ## Function: `createRecruitment`
 
 ### Description
