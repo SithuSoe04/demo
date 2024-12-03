@@ -62,7 +62,6 @@ Deletes an existing recruitment post by its unique ID.
 -  200 OK: Recruitment post successfully deleted.
 ```
 { "message": "Recruitment deleted successfully" }
-
 ```
 -  400 Bad Request: Missing required recruitment_id parameter.
 ```
@@ -77,3 +76,38 @@ Deletes an existing recruitment post by its unique ID.
 { "error": "Error deleting recruitment: <error message>" }
 ```
 
+## Function: `getUserRecruitment`
+
+### Description
+Retrieves all recruitment posts for a user, filtered by the clubs they have marked as favorites.
+
+### Parameters
+- `req: Request` - The HTTP request object with user_id in the query string.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+- user_id (string): Unique ID of the user to filter recruitment posts.
+
+### Responses
+-  200 OK: Successfully retrieved recruitment posts.
+```
+{
+  "data": [
+    {
+      "recruitment_id": number,
+      "club_id": number,
+      "title": string,
+      "date_posted": string,
+      "deadline": string,
+      "application_link": string,
+      "club_name": string
+    },
+    ...
+  ]
+}
+```
+-  500 Internal Server Error: Database or server error.
+```
+{ "error": "Error getting recruitment posts: <error message>" }
+```
