@@ -2,6 +2,7 @@
 
 This module provides functions to manage recruitment posts for a club using an SQLite database and Express.js. The endpoints allow creating, deleting, and retrieving recruitment posts.
 
+# Recruitment
 ---
 
 ## Function: `createRecruitment`
@@ -111,3 +112,48 @@ Retrieves all recruitment posts for a user, filtered by the clubs they have mark
 ```
 { "error": "Error getting recruitment posts: <error message>" }
 ```
+
+# Events
+---
+
+## Function: `createEvent`
+
+### Description
+Creates a new event for a club. The event includes details such as the club's ID, title, date, room, and optional incentives.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the event details in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Expected Request Body
+```
+{
+  "club_id": number,         // ID of the club hosting the event
+  "title": string,           // Title of the event
+  "date": string,            // Date of the event
+  "room": string,            // Location of the event
+  "incentives": string?      // (Optional) Incentives for attending the event
+}
+```
+
+### Responses
+-  201 Created: Event successfully created
+```
+{
+  "club_id": number,
+  "title": string,
+  "date": string,
+  "room": string,
+  "incentives": string | null
+}
+```
+- 400 Bad Request: Missing required fields.
+```
+{ "error": "Missing required fields" }
+```
+- 500 Internal Server Error: Database or server error.
+```
+{ "error": "Event could not be created, + <error message>" }
+```
+
