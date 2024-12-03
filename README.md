@@ -549,7 +549,57 @@ Logs a user into the system by verifying their email and password.
 { "error": "Log in unsuccessful: <error message>" }
 ```
 
+## Function: `verifySecurity`
 
+### Description
+Verifies the security question and answer for a user during a password recovery process.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the email, securityQuestion, and securityAnswer fields in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Security details match.
+```
+{ "message": "Verification successful", "verified": true }
+```
+-  401 Unauthorized: Security details do not match.
+```
+{ "error": "Security details do not match", "verified": false }
+```
+-  404 Not Found: User not found.
+```
+{ "error": "User not found" }
+```
+-  500 Internal Server Error: Database or server error during verification.
+```
+{ "error": "Server error: <error message>" }
+```
+
+## Function: `updatePassword`
+
+### Description
+Updates the password for a user identified by their email.
+
+### Parameters
+- `req: Request` - The HTTP request object containing email and newPassword in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully updated the user's password.
+```
+{ "message": "Password updated successfully" }
+```
+-  400 Bad Request: Missing required fields (email, newPassword).
+```
+{ "error": "Missing required fields" }
+```
+-  500 Internal Server Error: Error updating the password in the database.
+```
+{ "error": "Server error: <error message>" }
+```
 
 
 
