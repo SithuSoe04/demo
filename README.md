@@ -174,7 +174,6 @@ Creates a new event for a club. The event includes details such as the club's ID
 -  200 OK: Event successfully deleted.
 ```
 { "message": "Event deleted successfully" }
-
 ```
 - 400 Bad Request: Missing event_id parameter.
 ```
@@ -205,24 +204,23 @@ Fetches all events for all clubs.
 ### Responses
 -  200 OK: Successfully retrieved all events.
 ```
-{ "data": [ {
+{
+"data": [
+  {
   "club_id": number,
   "title": string,
   "date": string,
   "room": string,
   "incentives": string | null
-}, ... }
-```
-- 400 Bad Request: Missing event_id parameter.
-```
-{ "error": "Missing required field: event_id" }
-```
-- 404 Not Found: Event not found.
-```
-{ "error": "Event not found" }
-```
+  },
+  ...
+  ]
+}
 - 500 Internal Server Error: Database or server error.
 ```
-{ "error": "Error deleting event: <error message>" }
+{ "error": "Error getting events: <error message>" }
 ```
+
+
+
 
