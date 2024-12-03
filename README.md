@@ -45,3 +45,35 @@ Creates a new recruitment post for a club. The post includes details like the cl
 ```
 
 
+## Function: `deleteRecruitment`
+
+### Description
+Deletes an existing recruitment post by its unique ID.
+
+### Parameters
+- `req: Request` - The HTTP request object with recruitment_id as a route parameter.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+- recruitment_id (string): Unique ID of the recruitment post to delete.
+
+### Responses
+-  200 OK: Recruitment post successfully deleted.
+```
+{ "message": "Recruitment deleted successfully" }
+
+```
+-  400 Bad Request: Missing required recruitment_id parameter.
+```
+{ "error": "Missing required field: recruitment_id" }
+```
+- 404 Not Found: Recruitment post not found.
+```
+{ "error": "Recruitment not found" }
+```
+- 500 Internal Server Error: Database or server error.
+```
+{ "error": "Error deleting recruitment: <error message>" }
+```
+
