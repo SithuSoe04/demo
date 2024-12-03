@@ -157,3 +157,72 @@ Creates a new event for a club. The event includes details such as the club's ID
 { "error": "Event could not be created, + <error message>" }
 ```
 
+## Function: `deleteEvent`
+
+### Description
+Creates a new event for a club. The event includes details such as the club's ID, title, date, room, and optional incentives.
+
+### Parameters
+- `req: Request` - The HTTP request object with event_id as a route parameter.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+- `event_id: string` - Unique ID of the event to delete.
+
+### Responses
+-  200 OK: Event successfully deleted.
+```
+{ "message": "Event deleted successfully" }
+
+```
+- 400 Bad Request: Missing event_id parameter.
+```
+{ "error": "Missing required field: event_id" }
+```
+- 404 Not Found: Event not found.
+```
+{ "error": "Event not found" }
+```
+- 500 Internal Server Error: Database or server error.
+```
+{ "error": "Error deleting event: <error message>" }
+```
+
+## Function: `getAllClubEvents`
+
+### Description
+Fetches all events for all clubs.
+
+### Parameters
+- `req: Request` - The HTTP request object.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+- `event_id: string` - Unique ID of the event to delete.
+
+### Responses
+-  200 OK: Successfully retrieved all events.
+```
+{ "data": [ {
+  "club_id": number,
+  "title": string,
+  "date": string,
+  "room": string,
+  "incentives": string | null
+}, ... }
+```
+- 400 Bad Request: Missing event_id parameter.
+```
+{ "error": "Missing required field: event_id" }
+```
+- 404 Not Found: Event not found.
+```
+{ "error": "Event not found" }
+```
+- 500 Internal Server Error: Database or server error.
+```
+{ "error": "Error deleting event: <error message>" }
+```
+
