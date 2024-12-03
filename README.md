@@ -431,20 +431,34 @@ Registers a new temporary user in the database.
 -  201 Created: Successfully created a temporary user.
 ```
 { "message": "Temporary user created", "tempId": number }
-]
 ```
-400 Bad Request: Missing required fields (name, email, password).
+-  400 Bad Request: Missing required fields (name, email, password).
 ```
 { "error": "Missing required fields" }
 ```
-409 Conflict: The email is already registered.
+-  409 Conflict: The email is already registered.
 ```
 { "error": "Email is already registered" }
 ```
-500 Internal Server Error: Database or server error during registration.
+-  500 Internal Server Error: Database or server error during registration.
 ```
 { "error": "Error registering user: <error message>" }
 ```
+
+## Function: `updateUserProfile`
+
+### Description
+Updates the profile information of a temporary user.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the tempId, college, major, year, and minor fields in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+
+
+
+
 
 
 
