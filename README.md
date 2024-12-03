@@ -417,7 +417,34 @@ Fetches all users from the database.
 { "error": "Failed to fetch users" }
 ```
 
+## Function: `userSignUp`
 
+### Description
+Registers a new temporary user in the database.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the name, email, and password fields in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Responses
+-  201 Created: Successfully created a temporary user.
+```
+{ "message": "Temporary user created", "tempId": number }
+]
+```
+400 Bad Request: Missing required fields (name, email, password).
+```
+{ "error": "Missing required fields" }
+```
+409 Conflict: The email is already registered.
+```
+{ "error": "Email is already registered" }
+```
+500 Internal Server Error: Database or server error during registration.
+```
+{ "error": "Error registering user: <error message>" }
+```
 
 
 
