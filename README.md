@@ -1,4 +1,5 @@
 # API Documentation
+This API provides a set of endpoints designed to manage user interactions with events, clubs, and other members in the system. The primary functionality is organized into several sections: Recruitment, Users, Events, Clubs, and Friends.
 
 # Recruitment
 ---
