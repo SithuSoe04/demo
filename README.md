@@ -454,6 +454,103 @@ Updates the profile information of a temporary user.
 - `req: Request` - The HTTP request object containing the tempId, college, major, year, and minor fields in the body.
 - `res: Response` - The HTTP response object.
 - `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully updated the temporary user's profile.
+```
+{ "message": "Temporary profile updated successfully" }
+```
+-  400 Bad Request: Missing required tempId.
+```
+{ "error": "Missing required temp ID" }
+```
+-  500 Internal Server Error: Database or server error during update
+```
+{ "error": "Error updating profile: <error message>" }
+```
+
+## Function: `updateUserSecurity`
+
+### Description
+Updates the security question and answer of a temporary user.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the tempId, securityQuestion, and securityAnswer fields in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully updated the user's security information.
+```
+{ "message": "Security information updated successfully" }
+```
+-  400 Bad Request: Missing required fields (tempId, securityQuestion, securityAnswer).
+```
+{ "error": "Missing required fields" }
+```
+-  500 Internal Server Error: Database or server error during update.
+```
+{ "error": "Error updating security information: <error message>" }
+```
+
+## Function: `finalizeUser`
+
+### Description
+Finalizes user registration by moving data from the temporary user table to the main users table.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the tempId field in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  201 Created: Successfully finalized user registration.
+```
+{ "message": "User registration finalized", "user_id": number }
+```
+-  400 Bad Request: Missing required tempId.
+```
+{ "error": "Missing required temp ID" }
+```
+-  404 Not Found: The temporary user was not found.
+```
+{ "error": "Temporary user not found" }
+```
+-  500 Internal Server Error: Database or server error during finalization.
+```
+{ "error": "Error finalizing user registration: <error message>" }
+```
+
+## Function: `userLogIn`
+
+### Description
+Logs a user into the system by verifying their email and password.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the email and password fields in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully logged in.
+```
+{ "message": "Logged in successfully", "user_id": number }
+```
+-  400 Bad Request: Missing required fields (email, password).
+```
+{ "error": "Missing required fields" }
+```
+-  401 Unauthorized: Incorrect username or password.
+```
+{ "message": "Username or password does not match" }
+```
+-  500 Internal Server Error: Database or server error during login.
+```
+{ "error": "Log in unsuccessful: <error message>" }
+```
+
+
+
 
 
 
