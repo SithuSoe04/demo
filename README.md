@@ -1,6 +1,4 @@
-# Recruitment Management API Documentation
-
-This module provides functions to manage recruitment posts for a club using an SQLite database and Express.js. The endpoints allow creating, deleting, and retrieving recruitment posts.
+# API Documentation
 
 # Recruitment
 ---
