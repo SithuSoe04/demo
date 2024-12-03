@@ -216,10 +216,141 @@ Fetches all events for all clubs.
   ...
   ]
 }
+```
+## Function: `getAllClubEvents`
+
+### Description
+Fetches all events for all clubs.
+
+### Parameters
+- `req: Request` - The HTTP request object.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+- `event_id: string` - Unique ID of the event to delete.
+
+### Responses
+-  200 OK: Successfully retrieved all events.
+```
+{
+"data": [
+  {
+  "club_id": number,
+  "title": string,
+  "date": string,
+  "room": string,
+  "incentives": string | null
+  },
+  ...
+  ]
+}
+```
 - 500 Internal Server Error: Database or server error.
 ```
 { "error": "Error getting events: <error message>" }
 ```
+## Function: `deleteEvent`
+
+### Description
+Creates a new event for a club. The event includes details such as the club's ID, title, date, room, and optional incentives.
+
+### Parameters
+- `req: Request` - The HTTP request object with event_id as a route parameter.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+- `event_id: string` - Unique ID of the event to delete.
+
+### Responses
+-  200 OK: Event successfully deleted.
+```
+{ "message": "Event deleted successfully" }
+```
+- 400 Bad Request: Missing event_id parameter.
+```
+{ "error": "Missing required field: event_id" }
+```
+- 404 Not Found: Event not found.
+```
+{ "error": "Event not found" }
+```
+- 500 Internal Server Error: Database or server error.
+```
+{ "error": "Error deleting event: <error message>" }
+```
+
+## Function: `getUserUpcomingEvents`
+
+### Description
+Fetches all upcoming events for a specific user based on their club preferences.
+
+### Parameters
+- `req: Request` - The HTTP request object containing user_id in the query.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+-  `user_id: string - ID` of the user whose upcoming events are to be retrieved.
+
+### Responses
+-  200 OK: Successfully retrieved all events.
+```
+{
+"data": [
+  {
+  "club_id": number,
+  "title": string,
+  "date": string,
+  "room": string,
+  "incentives": string | null
+  },
+  ...
+  ]
+}
+```
+-  500 Internal Server Error: Database or server error during fetching.
+```
+{ "error": "Error getting user upcoming events: <error message>" }
+```
+
+## Function: `getUserNonFavoriteEvents`
+
+### Description
+Fetches all non-favorite events for a user based on their club preferences.
+
+### Parameters
+- `req: Request` - The HTTP request object containing user_id in the query.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+
+### Route Parameters
+-  `user_id: string - ID` of the user whose non-favorite events are to be retrieved.
+
+### Responses
+-  200 OK: Successfully retrieved all events.
+```
+{
+"data": [
+  {
+  "club_id": number,
+  "title": string,
+  "date": string,
+  "room": string,
+  "incentives": string | null
+  },
+  ...
+  ]
+}
+```
+-  500 Internal Server Error: Database or server error during fetching.
+```
+{ "error": "Error getting user upcoming non-favorite events: <error message>" }
+```
+
+
+
 
 
 
