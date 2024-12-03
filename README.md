@@ -15,6 +15,7 @@ Creates a new recruitment post for a club. The post includes details like the cl
 - `db: Database` - The SQLite database instance.
 
 ### Expected Request Body
+```
 {
   "club_id": number,       // ID of the club creating the recruitment post
   "title": string,         // Title of the recruitment post
@@ -22,6 +23,7 @@ Creates a new recruitment post for a club. The post includes details like the cl
   "deadline": string,      // Deadline for applications
   "application_link": string // URL link to the application form
 }
+```
 
 ### Responses
 -  201 Created: Recruitment post successfully created.
@@ -33,5 +35,13 @@ Creates a new recruitment post for a club. The post includes details like the cl
   "application_link": string
 }
 ```
-- `res: Response` - The HTTP response object.
-- `db: Database` - The SQLite database instance.
+-  400 Bad Request: Missing required fields.
+```
+{ "error": "Missing required fields" }
+```
+- 500 Internal Server Error: Database or server error.
+```
+{ "error": "Recruitment could not be created: <error message>" }
+```
+
+
