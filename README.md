@@ -601,9 +601,158 @@ Updates the password for a user identified by their email.
 { "error": "Server error: <error message>" }
 ```
 
+## Function: `userFavoriteEvent`
 
+### Description
+Adds an event to the list of favorite events for a user.
 
+### Parameters
+- `req: Request` - The HTTP request object containing user_id and event_id in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully favorited the event.
+```
+{ "message": "Event favorited successfully", "user_id": number, "event_id": number }
+```
+-  400 Bad Request: Missing required fields (user_id, event_id).
+```
+{ "error": "Missing required fields" }
+```
+-  500 Internal Server Error: Error favoriting the event.
+```
+{ "error": "Event could not be favorited: <error message>" }
+```
 
+## Function: `userUnfavoriteEvent`
+
+### Description
+Removes an event from the user's list of favorite events.
+
+### Parameters
+- `req: Request` - The HTTP request object containing user_id and event_id in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully unfavorited the event.
+```
+{ "message": "Event unfavorited successfully", "user_id": number, "event_id": number }
+```
+-  400 Bad Request: Missing required fields (user_id, event_id).
+```
+{ "error": "Missing required fields" }
+```
+-  500 Internal Server Error: Error unfavoriting the event.
+```
+{ "error": "Event could not be unfavorited: <error message>" }
+```
+
+## Function: `userFavoriteClub`
+
+### Description
+Adds a club to the list of favorite clubs for a user.
+
+### Parameters
+- `req: Request` - The HTTP request object containing user_id and club_id in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully favorited the club.
+```
+{ "message": "Club favorited successfully", "user_id": number, "club_id": number }
+```
+-  400 Bad Request: Missing required fields (user_id, club_id).
+```
+{ "error": "Missing required fields" }
+```
+-  500 Internal Server Error: Error favoriting the club.
+```
+{ "error": "Club could not be favorited: <error message>" }
+```
+
+## Function: `userUnfavoriteClub`
+
+### Description
+Removes a club from the user's list of favorite clubs.
+
+### Parameters
+- `req: Request` - The HTTP request object containing user_id and club_id in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully unfavorited the club.
+```
+{ "message": "Club unfavorited successfully", "user_id": number, "club_id": number }
+```
+-  400 Bad Request: Missing required fields (user_id, club_id).
+```
+{ "error": "Missing required fields" }
+```
+-  500 Internal Server Error: Error unfavoriting the club.
+```
+{ "error": "Club could not be unfavorited: <error message>" }
+```
+
+## Function: `updatePrivacy`
+
+### Description
+Updates the privacy setting for a user.
+
+### Parameters
+- `req: Request` - The HTTP request object containing user_id and newPrivacyState in the body.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully updated the privacy setting.
+```
+{ "message": "Privacy setting updated successfully" }
+```
+-  400 Bad Request: Missing required fields (user_id, newPrivacyState).
+```
+{ "error": "Missing required fields" }
+```
+-  500 Internal Server Error: Error updating the privacy setting in the database.
+```
+{ "error": "Error updating privacy setting: <error message>" }
+```
+
+## Function: `getUser`
+
+### Description
+Fetches the user data for a given user ID.
+
+### Parameters
+- `req: Request` - The HTTP request object containing the user_id in the query.
+- `res: Response` - The HTTP response object.
+- `db: Database` - The SQLite database instance.
+  
+### Responses
+-  200 OK: Successfully retrieved the user data.
+```
+{
+  "user_id": number,
+  "name": string,
+  "email": string,
+  "college": string | null,
+  "major": string | null,
+  "year": string | null,
+  "minor": string | null,
+  "private": number
+}
+```
+-  400 Bad Request: Missing required user_id.
+```
+{ "error": "Missing required user_id" }
+```
+-  500 Internal Server Error: Error fetching the user data.
+```
+{ "error": "Failed to fetch user" }
+```
 
 
 
